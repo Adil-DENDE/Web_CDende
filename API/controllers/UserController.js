@@ -1,5 +1,13 @@
 var config = require("../database/db");
 
+// REGISTER VAN EEN NIEUWE USER //
+const registerUser = (req, res) => {
+  res.json({message :"Hey hier ga ik de register implementeren"})
+};
+
+const authUser = (req, res) => {
+  res.json({message :"Hey hier ga ik de auth implementeren"})
+};
 
 // GEEFT ALLE USERS TERUG //
 const getAllUsers = (req, res) => {
@@ -18,7 +26,6 @@ const getAllUsers = (req, res) => {
   });
 };
 
-
 // GEEFT EEN BEPAALDE USER TERUG //
 const getUserOnId = (req, res) => {
   const id = req.params.id;
@@ -33,4 +40,4 @@ const getUserOnId = (req, res) => {
   });
 };
 
-module.exports = { getAllUsers, getUserOnId };
+module.exports = { getAllUsers, getUserOnId, registerUser, authUser };
