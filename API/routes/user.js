@@ -1,22 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const {
-  getAllUsers,
-  getUserOnId,
-  registerUser,
-  authUser,
-} = require("../controllers/UserController");
+const UserController = require("../controllers/UserController");
 
 // REGISTER VAN EEN NIEUWE USER //
-router.get("/register", registerUser);
+router.post("/register", UserController.registerUser);
 
 // LOGIN VAN EEN USER //
-router.get("/auth", authUser);
+router.get("/auth", UserController.authUser);
 
 // GET ALLE USERS //
-router.get("/", getAllUsers);
+router.get("/", UserController.getAllUsers);
+
 // GET EEN BEPAALDE USER //
-router.get("/:id", getUserOnId);
+router.get("/:id", UserController.getUserOnId);
 
 // DIT MOET ALTIJD BENEDEN HET IS OM DIE TE EXPORTEREN EN KUNNEN IMPORTEREN IN ANDERE FILES NAMELIJK DE INDEX.JS //
 module.exports = router;
