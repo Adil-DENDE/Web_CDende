@@ -1,6 +1,6 @@
 var config = require("../database/db"); // DB CONN
 const jwt = require("jsonwebtoken"); // JWT TOKEN
-const { query, validationResult } = require('express-validator'); // VALIDATOR
+const Joi = require("joi");
 
 // REGISTER VAN EEN NIEUWE USER //
 const registerUser = (req, res) => {
@@ -34,8 +34,21 @@ const registerUser = (req, res) => {
 };
 
 // LOGIN VAN EEN USER //
+
 const authUser = (req, res) => {
-  res.json({ message: "Hey hier ga ik de auth implementeren" });
+  const signupSchema = Joi.object({
+    email: Joi.string().email().required(),
+    paswoord: Joi.string().min(3).max(10).required(),
+    username: Joi.string().required(),
+  });
+
+  const { error, result } = signupSchema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  } else {
+    return res.send({ message: "Het is gelukt !" }).status(400);
+  }
 };
 
 // GEEFT ALLE USERS TERUG //
@@ -63,7 +76,7 @@ const getUserOnId = (req, res) => {
   config.query(query, (err, result) => {
     if (!result.length) {
       return res.status(404).json({ error: "Geen user met dit id" });
-    };
+    }
     if (err) {
       res.send("Er is een probleem", err).status(500);
     } else {

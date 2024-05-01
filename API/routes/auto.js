@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { getAllCars, getImageCar } = require("../controllers/CarController");
+const CarController = require("../controllers/CarController");
 
 // GET ALLE AUTOS //
-router.get("/", getAllCars);
+router.get("/", CarController.getAllCars);
 
 // GET IMAGE FOR A CAR //
-router.get("/image/:id", getImageCar);
+router.get("/image/:id", CarController.getImageCar);
 
 // DIT MOET ALTIJD BENEDEN HET IS OM DIE TE EXPORTEREN EN KUNNEN IMPORTEREN IN ANDERE FILES NAMELIJK DE INDEX.JS //
 module.exports = router;
