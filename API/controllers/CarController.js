@@ -36,7 +36,7 @@ const getImageCar = (req, res) => {
         .send("Er is een fout opgetreden bij het ophalen van de auto's.");
     } else {
       console.log("Gegevens succesvol opgehaald.");
-      const imagePath = path.join(__dirname, "..", results[0].path);
+      const imagePath = path.join(__dirname, "..", results[0].PATH);
       res.sendFile(imagePath);
     }
   });

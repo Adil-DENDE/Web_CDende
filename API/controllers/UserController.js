@@ -1,54 +1,79 @@
 var config = require("../database/db"); // DB CONN
 const jwt = require("jsonwebtoken"); // JWT TOKEN
 const Joi = require("joi");
+const path = require("path");
 
 // REGISTER VAN EEN NIEUWE USER //
 const registerUser = (req, res) => {
-  const { email, paswoord, username } = req.body;
+  // VALIDATIE VAN DE INPUTS //
+  // HIER WORDT ER GEBRUIK GEMAAKT VAN JOI OM DE INPUTS TE VALIDEREN //
+  // https://medium.com/sliit-foss/the-joy-of-validating-with-joi-b8c87991975b
+  const signupSchema = Joi.object({
+    email: Joi.string().email().required(),
+    paswoord: Joi.string().min(3).required(),
+    username: Joi.string().required(),
+    repeatPassword: Joi.string().required().valid(Joi.ref('paswoord')).messages({
+      'any.only': 'The two passwords do not match',
+      'any.required': 'Please re-enter the password',
+    }),
+  }).validate(req.body);
 
-  const queryCheck = `SELECT email FROM user WHERE EXISTS (SELECT email FROM user WHERE email = '${email}')`;
+  const { error, result } = signupSchema;
 
-  config.query(queryCheck, (err, results) => {
-    if (err) {
-      res.json({ error: "Iets is foutgelopen !" }).status(404);
-    } else {
-      if (results.length === 0) {
-        const query = `INSERT INTO user VALUES (null, '${username}', 0, '${email}', '${paswoord}')`;
-        config.query(query, req.body, (err) => {
-          if (err) {
-            console.error("Fout bij het uitvoeren van de query: ", err);
-            return res.status(500).send("Error");
-          } else {
-            return res
-              .json({ message: "User succesvol toegevoegd !" })
-              .status(202);
-          }
-        });
+  if (error) return res.json({ message: error.message }).status(404);
+  else {
+    // CHECKEN OF DE EMAIL AL BESTAAT OM GEEN USER MET DEZELFDE EMAIL TOE TE VOEGEN //
+    const queryCheck = `SELECT email FROM user WHERE EXISTS (SELECT email FROM user WHERE email = '${signupSchema.value.email}') OR EXISTS (SELECT username FROM user WHERE username = '${signupSchema.value.username}')`;
+
+    // QUERY OM DE USER TOE TE VOEGEN //
+    config.query(queryCheck, (err, results) => {
+      if (err) {
+        res.json({ error: "Iets is foutgelopen !" }).status(404);
       } else {
-        return res
-          .json({ message: "Een account met deze email bestaat !" })
-          .status(404);
+        if (results.length == 0) {
+          const query = `INSERT INTO user VALUES (null, '${signupSchema.value.username}', '${signupSchema.value.email}', '${signupSchema.value.paswoord}', '0')`;
+          config.query(query, req.body, (err) => {
+            if (err) {
+              console.error("Fout bij het uitvoeren van de query: ", err);
+              return res.status(500).send("Error");
+            } else {
+              return res
+                .json({ message: "Account succesvol gecreëerd" })
+                .status(202);
+            }
+          });
+        } else {
+          return res
+            .json({ message: "Een account met deze email bestaat !" })
+            .status(404);
+        }
       }
-    }
-  });
+    });
+  }
 };
 
 // LOGIN VAN EEN USER //
-
 const authUser = (req, res) => {
   const signupSchema = Joi.object({
     email: Joi.string().email().required(),
-    paswoord: Joi.string().min(3).max(10).required(),
-    username: Joi.string().required(),
+    paswoord: Joi.string().min(8).required(),
   });
-
   const { error, result } = signupSchema.validate(req.body);
 
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  } else {
-    return res.send({ message: "Het is gelukt !" }).status(400);
-  }
+  const query = `SELECT * FROM user WHERE email = '${req.body.email}' AND paswoord = '${req.body.paswoord}'`;
+  config.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).send("Er is een probleem met de query");
+    } else {
+      if (results.length === 0) {
+        return res.status(404).json({ error: "Geen user gevonden" });
+      } else {
+        // JWT TOKEN GENEREREN MET ALS CLAIM DE EMAIL //
+        const token = jwt.sign({ email: req.body.email }, "secret_key", { expiresIn: '3600s' });
+        return res.json({ message: "Succesvol ingelogd", token: token });
+      }
+    }
+  });
 };
 
 // GEEFT ALLE USERS TERUG //
@@ -85,4 +110,34 @@ const getUserOnId = (req, res) => {
   });
 };
 
-module.exports = { getAllUsers, getUserOnId, registerUser, authUser };
+// GET IMAGE FOR A CAR //
+const getImageUser = (req, res) => {
+  const id = req.params.id;
+  const query = "SELECT * FROM user_image WHERE id =" + id;
+
+  config.query(query, (err, results) => {
+    if (!results.length) {
+      return res.status(404).json({ error: "Geen image user" });
+    }
+    if (err) {
+      console.error("Fout bij het uitvoeren van de query: ", err);
+      res
+        .status(500)
+        .send(
+          "Er is een fout opgetreden bij het ophalen van de gebruiker foto."
+        );
+    } else {
+      console.log("Gegevens succesvol opgehaald.");
+      const imagePath = path.join(__dirname, "..", results[0].PATH);
+      res.sendFile(imagePath);
+    }
+  });
+};
+
+module.exports = {
+  getAllUsers,
+  getUserOnId,
+  registerUser,
+  authUser,
+  getImageUser,
+};

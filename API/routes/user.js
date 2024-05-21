@@ -14,5 +14,8 @@ router.get("/", UserController.getAllUsers);
 // GET EEN BEPAALDE USER //
 router.get("/:id", UserController.getUserOnId);
 
+// GET IMAGE VOOR EEN USER //
+router.get("/image/:id", UserController.getImageUser);
+
 // DIT MOET ALTIJD BENEDEN HET IS OM DIE TE EXPORTEREN EN KUNNEN IMPORTEREN IN ANDERE FILES NAMELIJK DE INDEX.JS //
 module.exports = router;
