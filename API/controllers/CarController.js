@@ -19,6 +19,22 @@ const getAllCars = (req, res) => {
   });
 };
 
+// GET EEN BEPAALDE AUTO //
+const getCarOnId = (req, res) => {
+  const id = req.params.id;
+  const query = "SELECT * FROM car where ID =" + id;
+
+  config.query(query, (err, result) => {
+    if (result.length === 0) {
+      return res.status(404).json({ error: "Geen auto met dit id" });
+    }
+    if (err) {
+      res.send("Er is een probleem", err).status(500);
+    } else {
+      res.json(result[0]);
+    }
+  });
+}
 
 // GET IMAGE FOR A CAR //
 const getImageCar = (req, res) => {
@@ -42,4 +58,4 @@ const getImageCar = (req, res) => {
   });
 };
 
-module.exports = { getAllCars, getImageCar };
+module.exports = { getAllCars, getImageCar, getCarOnId };

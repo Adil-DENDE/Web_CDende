@@ -1,21 +1,25 @@
-var config = require("../database/db"); // DB CONN
-const jwt = require("jsonwebtoken"); // JWT TOKEN
-const Joi = require("joi");
-const path = require("path");
+var config = require("../database/db"); // DB CONNECTION //
+const jwt = require("jsonwebtoken"); // JWT TOKEN OM DE USER TE AUTHENTICEREN //
+const Joi = require("joi"); // WORDT GEBRUIKT VOOR VALIDATIE VAN DE INPUTS //
+const path = require("path"); // PATH OM DE IMAGE OP TE HALEN //
+const md5 = require('md5'); // MD5 OM HET PASWOORD TE HASHEN //
+
 
 // REGISTER VAN EEN NIEUWE USER //
 const registerUser = (req, res) => {
-  // VALIDATIE VAN DE INPUTS //
   // HIER WORDT ER GEBRUIK GEMAAKT VAN JOI OM DE INPUTS TE VALIDEREN //
   // https://medium.com/sliit-foss/the-joy-of-validating-with-joi-b8c87991975b
   const signupSchema = Joi.object({
     email: Joi.string().email().required(),
     paswoord: Joi.string().min(3).required(),
     username: Joi.string().required(),
-    repeatPassword: Joi.string().required().valid(Joi.ref('paswoord')).messages({
-      'any.only': 'The two passwords do not match',
-      'any.required': 'Please re-enter the password',
-    }),
+    repeatPassword: Joi.string()
+      .required()
+      .valid(Joi.ref("paswoord"))
+      .messages({
+        "any.only": "The two passwords do not match",
+        "any.required": "Please re-enter the password",
+      }),
   }).validate(req.body);
 
   const { error, result } = signupSchema;
@@ -31,7 +35,8 @@ const registerUser = (req, res) => {
         res.json({ error: "Iets is foutgelopen !" }).status(404);
       } else {
         if (results.length == 0) {
-          const query = `INSERT INTO user VALUES (null, '${signupSchema.value.username}', '${signupSchema.value.email}', '${signupSchema.value.paswoord}', '0')`;
+          // HIER MAKEN WE GEBRUIK VAN MD5 OM HET PASWOORD TE HASHEN //
+          const query = `INSERT INTO user VALUES (null, '${signupSchema.value.username}', '${signupSchema.value.email}', '${md5(signupSchema.value.paswoord)}', '0')`;
           config.query(query, req.body, (err) => {
             if (err) {
               console.error("Fout bij het uitvoeren van de query: ", err);
@@ -60,16 +65,18 @@ const authUser = (req, res) => {
   });
   const { error, result } = signupSchema.validate(req.body);
 
-  const query = `SELECT * FROM user WHERE email = '${req.body.email}' AND paswoord = '${req.body.paswoord}'`;
+  const query = `SELECT * FROM user WHERE email = '${req.body.email}' AND paswoord = '${md5(req.body.paswoord)}'`;
   config.query(query, (err, results) => {
     if (err) {
-      return res.status(500).send("Er is een probleem met de query");
+      return res.status(500).send("Er is een probleem opgetreden.");
     } else {
       if (results.length === 0) {
-        return res.status(404).json({ error: "Geen user gevonden" });
+        return res.status(404).json({ error: "Onjuiste inloggegevens." });
       } else {
         // JWT TOKEN GENEREREN MET ALS CLAIM DE EMAIL //
-        const token = jwt.sign({ email: req.body.email }, "secret_key", { expiresIn: '3600s' });
+        const token = jwt.sign({ email: req.body.email }, "secret_key", {
+          expiresIn: "3600s",
+        });
         return res.json({ message: "Succesvol ingelogd", token: token });
       }
     }
@@ -85,7 +92,7 @@ const getAllUsers = (req, res) => {
       console.error("Fout bij het uitvoeren van de query: ", err);
       res
         .status(500)
-        .send("Er is een fout opgetreden bij het ophalen van de gebruikers.");
+        .json("Er is een fout opgetreden bij het ophalen van de gebruikers.", 401);
     } else {
       console.log("Gegevens succesvol opgehaald.");
       res.json(results);
@@ -96,10 +103,11 @@ const getAllUsers = (req, res) => {
 // GEEFT EEN BEPAALDE USER TERUG //
 const getUserOnId = (req, res) => {
   const id = req.params.id;
-  const query = "SELECT * FROM user where user_id =" + id;
+  // QUERY OM EEN USER OP TE HALEN IK KAN MISSCHIEN LATER DEZE QUERY VERANDEREN BV(OM EEN JOIN TE DOEN MET EEN ANDERE TABLE) //
+  const query = "SELECT * FROM user where ID =" + id;
 
   config.query(query, (err, result) => {
-    if (!result.length) {
+    if (result.length === 0) {
       return res.status(404).json({ error: "Geen user met dit id" });
     }
     if (err) {
