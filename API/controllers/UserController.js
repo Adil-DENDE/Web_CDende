@@ -2,8 +2,10 @@ var config = require("../database/db"); // DB CONNECTION //
 const jwt = require("jsonwebtoken"); // JWT TOKEN OM DE USER TE AUTHENTICEREN //
 const Joi = require("joi"); // WORDT GEBRUIKT VOOR VALIDATIE VAN DE INPUTS //
 const path = require("path"); // PATH OM DE IMAGE OP TE HALEN //
-const md5 = require('md5'); // MD5 OM HET PASWOORD TE HASHEN //
+const md5 = require("md5"); // MD5 OM HET PASWOORD TE HASHEN //
 
+// HIER WORDEN DE FUNCTIES GESCHREVEN DIE DE REQUESTS VAN DE ROUTES ZULLEN AFHANDELEN //
+// DEZE FUNCTIES ZULLEN DE QUERY'S UITVOEREN EN DE RESPONSES TERUGSTUREN //
 
 // REGISTER VAN EEN NIEUWE USER //
 const registerUser = (req, res) => {
@@ -36,7 +38,11 @@ const registerUser = (req, res) => {
       } else {
         if (results.length == 0) {
           // HIER MAKEN WE GEBRUIK VAN MD5 OM HET PASWOORD TE HASHEN //
-          const query = `INSERT INTO user VALUES (null, '${signupSchema.value.username}', '${signupSchema.value.email}', '${md5(signupSchema.value.paswoord)}', '0')`;
+          const query = `INSERT INTO user VALUES (null, '${
+            signupSchema.value.username
+          }', '${signupSchema.value.email}', '${md5(
+            signupSchema.value.paswoord
+          )}', '0')`;
           config.query(query, req.body, (err) => {
             if (err) {
               console.error("Fout bij het uitvoeren van de query: ", err);
@@ -66,6 +72,7 @@ const authUser = (req, res) => {
   const { error, result } = signupSchema.validate(req.body);
 
   const query = `SELECT * FROM user WHERE email = '${req.body.email}' AND paswoord = '${md5(req.body.paswoord)}'`;
+    
   config.query(query, (err, results) => {
     if (err) {
       return res.status(500).send("Er is een probleem opgetreden.");
@@ -73,11 +80,17 @@ const authUser = (req, res) => {
       if (results.length === 0) {
         return res.status(404).json({ error: "Onjuiste inloggegevens." });
       } else {
-        // JWT TOKEN GENEREREN MET ALS CLAIM DE EMAIL //
-        const token = jwt.sign({ email: req.body.email }, "secret_key", {
-          expiresIn: "3600s",
+        // HIER GET IK DE ID VAN DE USER ZODAT IK DIE IN DE CLAIMS KAN STEKEN //
+        const query = `SELECT id FROM user WHERE email = '${req.body.email}' AND paswoord = '${md5(req.body.paswoord)}'`;
+        config.query(query, (err, results) => {
+          if (err) {
+            return res.status(500).send("Er is een probleem opgetreden.");
+          }else{
+            // HIER WORD DE JWT TOKEN AANGEMAAKT MET ALS CLAIMS DE EMAIL EN ID VAN DE USER //
+            const token = jwt.sign({ email: req.body.email, id: results[0].id },"secret_key",{expiresIn: "3600s",});
+            return res.json({ message: "Succesvol ingelogd", token: token });
+          }
         });
-        return res.json({ message: "Succesvol ingelogd", token: token });
       }
     }
   });
@@ -92,7 +105,10 @@ const getAllUsers = (req, res) => {
       console.error("Fout bij het uitvoeren van de query: ", err);
       res
         .status(500)
-        .json("Er is een fout opgetreden bij het ophalen van de gebruikers.", 401);
+        .json(
+          "Er is een fout opgetreden bij het ophalen van de gebruikers.",
+          401
+        );
     } else {
       console.log("Gegevens succesvol opgehaald.");
       res.json(results);
@@ -104,7 +120,7 @@ const getAllUsers = (req, res) => {
 const getUserOnId = (req, res) => {
   const id = req.params.id;
   // QUERY OM EEN USER OP TE HALEN IK KAN MISSCHIEN LATER DEZE QUERY VERANDEREN BV(OM EEN JOIN TE DOEN MET EEN ANDERE TABLE) //
-  const query = "SELECT * FROM user where ID =" + id;
+  const query = "SELECT ID, USERNAME, EMAIL, USER_IMAGE_ID FROM user where ID =" + id;
 
   config.query(query, (err, result) => {
     if (result.length === 0) {
