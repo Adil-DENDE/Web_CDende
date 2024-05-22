@@ -1,4 +1,11 @@
 {
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/package.json",
+        "use": "@vercel/node"
+      }
+    ],
     "routes": [
       {
         "src": "/(.*)",
@@ -6,4 +13,5 @@
       }
     ]
   }
+  
   
