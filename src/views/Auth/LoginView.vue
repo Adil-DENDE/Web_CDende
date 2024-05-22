@@ -34,7 +34,7 @@
 
                     <!-- Button om in te loggen. 2 keuze -->
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary font-monospace border border-light" type="button">Login</button>
+                        <button class="btn btn-primary font-monospace border border-light" type="button" @click="auth" >Login</button>
                     </div>
 
 
@@ -51,6 +51,17 @@
 </template>
 
 <script setup>
+// import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter(); // router om te navigeren //
+
+
+function auth(/* email, password */) {
+    // HIER MOET DE AUTHENTICATIE GEBEUREN //
+    // DEZE METHODE MOET IN DE STORE GEIMPLEMENTEERD WORDEN //
+    // DUS LATER IN DE STORE(ik laat die hier om visueel te hebben) //
+    router.push('/home');
+}
 </script>
 
 <style scoped>

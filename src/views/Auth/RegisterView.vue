@@ -1,47 +1,61 @@
 <template>
     <div class="pageContainer">
 
-<div class="loginContainer">
-    <div>
-        <h1 class="loginTitle">Register</h1>
+        <div class="loginContainer">
+            <div>
+                <h1 class="loginTitle">Register</h1>
+            </div>
+            <br>
+            <div>
+                <!-- Input velden voor in te loggen (bootstrap) -->
+                <!-- En voor de icons https://primevue.org/icons/ -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
+                    <input type="text" class="form-control" placeholder="Naam" aria-label="Naam"
+                        aria-describedby="basic-addon1">
+                </div>
+                <!-- Input velden voor in te loggen (bootstrap) -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
+                    <input type="password" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
+                    <input type="password" class="form-control" placeholder="paswoord" aria-label="paswoord"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary font-monospace" type="button" @click="register">Register</button>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a class="btn btn-link p-lg-0 font-monospace" href="/">Heb al een account?</a>
+                    <a class="btn btn-link p-lg-0 font-monospace" href="/recover">Paswoord vergeten?</a>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <br>
-    <div>
-        <!-- Input velden voor in te loggen (bootstrap) -->
-        <!-- En voor de icons https://primevue.org/icons/ -->
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
-            <input type="text" class="form-control" placeholder="Naam" aria-label="Naam"
-                aria-describedby="basic-addon1">
-        </div>
-        <!-- Input velden voor in te loggen (bootstrap) -->
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-            <input type="password" class="form-control" placeholder="Email" aria-label="Email"
-                aria-describedby="basic-addon1">
-        </div>
-
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-            <input type="password" class="form-control" placeholder="paswoord" aria-label="paswoord"
-                aria-describedby="basic-addon1">
-        </div>
-
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary font-monospace" type="button">Register</button>
-        </div>
-
-        <div class="d-flex justify-content-between">
-            <a class="btn btn-link p-lg-0 font-monospace" href="/">Heb al een account?</a>
-            <a class="btn btn-link p-lg-0 font-monospace" href="/recover">Paswoord vergeten?</a>
-        </div>
-        
-    </div>
-</div>
-</div>
 </template>
 
-<script setup></script>
+<script setup>
+// import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter(); // router om te navigeren //
+
+
+function register(/*naam, email, password*/) {
+    // HIER MOET DE REGISTRATIE GEBEUREN EN JUIST ERNA DIRECT INLOGGEN //
+    // DEZE METHODE MOET IN DE STORE GEIMPLEMENTEERD WORDEN //
+    // DUS LATER IN DE STORE(ik laat die hier om visueel te hebben) //
+    router.push('/home');
+}
+
+
+</script>
 
 <style scoped>
 .pageContainer {
@@ -88,5 +102,4 @@
 *:focus {
     box-shadow: none !important;
 }
-
 </style>
