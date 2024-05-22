@@ -39,7 +39,7 @@
 
 
                     <div class="d-flex justify-content-between">
-                        <a class="btn btn-link p-lg-0 font-monospace txtAccount" href="/register.vue">Geen account?</a>
+                        <a class="btn btn-link p-lg-0 font-monospace txtAccount" href="/register">Geen account?</a>
                         <a class="btn btn-link p-lg-0 font-monospace txtPwd" href="/recover">Paswoord vergeten?</a>
                     </div>
 
