@@ -23,14 +23,16 @@
                     <!-- Input velden voor in te loggen (bootstrap) -->
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                        <input type="password" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
-                            aria-describedby="basic-addon1">
-                        <span class="input-group-text" id="basic-addon1"><span class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>      
+                        <input ref="inputType" type="password" class="form-control" placeholder="Mot de passe"
+                            aria-label="paswoord" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1"><span @click="changeInputType" ref="eyeIcon"
+                                class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
                     </div>
 
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth">Se connecter</button>     
+                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth">Se
+                            connecter</button>
                     </div>
 
 
@@ -48,10 +50,24 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter(); // router om te navigeren //
+const inputType = ref();
+const eyeIcon = ref();
 
+
+function changeInputType() {
+    if (inputType.value.type == 'password') {
+        inputType.value.type = 'text';
+        eyeIcon.value.classList.remove('pi-eye-slash');
+        eyeIcon.value.classList.add('pi-eye');
+    } else {
+        inputType.value.type = 'password';
+        eyeIcon.value.classList.remove('pi-eye');
+        eyeIcon.value.classList.add('pi-eye-slash');
+    }
+}
 
 function auth(/* email, password */) {
     // HIER MOET DE AUTHENTICATIE GEBEUREN //
