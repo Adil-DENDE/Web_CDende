@@ -17,13 +17,13 @@
                     <!-- En voor de icons https://primevue.org/icons/ -->
                     <div class="input-group mb-3 ">
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
-                        <input type="text" class="form-control" placeholder="E-mail" aria-label="email"
+                        <input v-model="email" type="text" class="form-control" placeholder="E-mail"  aria-label="email"
                             aria-describedby="basic-addon1">
                     </div>
                     <!-- Input velden voor in te loggen (bootstrap) -->
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                        <input ref="inputType" type="password" class="form-control" placeholder="Mot de passe"
+                        <input v-model="password" ref="inputType" type="password" class="form-control" placeholder="Mot de passe"
                             aria-label="paswoord" aria-describedby="basic-addon1">
                         <span class="input-group-text" id="basic-addon1"><span @click="changeInputType" ref="eyeIcon"
                                 class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
@@ -31,7 +31,7 @@
 
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth">Se
+                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth(email, password)">Se
                             connecter</button>
                     </div>
 
@@ -53,9 +53,11 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter(); // router om te navigeren //
-const inputType = ref();
-const eyeIcon = ref();
+const inputType = ref(); // ref voor het type van het input veld //
+const eyeIcon = ref(); // ref voor het eye icon te veranderen //
 
+const email = ref(''); // ref voor het email veld //
+const password = ref(''); // ref voor het password veld //
 
 function changeInputType() {
     if (inputType.value.type == 'password') {
@@ -69,12 +71,12 @@ function changeInputType() {
     }
 }
 
-function auth(/* email, password */) {
-    // HIER MOET DE AUTHENTICATIE GEBEUREN //
-    // DEZE METHODE MOET IN DE STORE GEIMPLEMENTEERD WORDEN //
-    // DUS LATER IN DE STORE(ik laat die hier om visueel te hebben) //
+ // DUS LATER IN DE STORE(ik laat die hier om visu te hebben) //
+function auth(inputEmail, inputPassword) {  // DEZE METHODE MOET IN DE STORE GEIMPLEMENTEERD WORDEN IMO //
+    console.log(inputEmail, ", ", inputPassword);
     router.push('/home');
 }
+
 </script>
 
 <style scoped>
