@@ -77,4 +77,21 @@
     box-shadow: none !important;
 }
 
+@media only screen and (max-width: 420px) {
+
+.txtAccount,
+.txtPwd {
+    font-size: small;
+}
+
+.pageContainer {
+display: block;
+}
+.loginContainer {
+width: 100%;
+border-radius: 0px;
+padding: 15px;
+}
+}
+
 </style>

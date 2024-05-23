@@ -23,15 +23,15 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                    <input type="password" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
+                    <input type="password" ref="inputTypePwd" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
                         aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span ref="eyeIcon" @click="changeInputType(inputTypePwd, eyeIcon)" class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                    <input type="password" class="form-control" placeholder="Confirmer le mot de passe" aria-label="paswoord" aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
+                    <input type="password" ref="inputTypePwdRepeat" class="form-control" placeholder="Confirmer le mot de passe" aria-label="paswoord" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1"><span ref="eyeIconPwdRepeat" @click="changeInputType(inputTypePwdRepeat, eyeIconPwdRepeat)" class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
                 </div>
 
 
@@ -53,18 +53,34 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter(); // router om te navigeren //
+const inputTypePwdRepeat = ref(); // ref voor het type van het input veld //
+const eyeIconPwdRepeat = ref(); // ref voor het eye icon te veranderen //
+const inputTypePwd = ref(); // ref voor het type van het input veld //
+const eyeIcon = ref(); // ref voor het eye icon te veranderen //
+
+function changeInputType(input, icon) {
+    if (input.type == 'password') {
+        input.type = 'text';
+        icon.classList.remove('pi-eye-slash');
+        icon.classList.add('pi-eye');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('pi-eye');
+        icon.classList.add('pi-eye-slash');
+    }
+}
 
 
-function register(/*naam, email, password*/) {
+
+function register(/*naam, email, password, passwordrepeat*/) {
     // HIER MOET DE REGISTRATIE GEBEUREN EN JUIST ERNA DIRECT INLOGGEN //
     // DEZE METHODE MOET IN DE STORE GEIMPLEMENTEERD WORDEN //
     // DUS LATER IN DE STORE(ik laat die hier om visueel te hebben) //
     router.push('/home');
 }
-
 
 </script>
 
@@ -112,6 +128,23 @@ function register(/*naam, email, password*/) {
 
 *:focus {
     box-shadow: none !important;
+}
+
+@media only screen and (max-width: 420px) {
+
+.txtAccount,
+.txtPwd {
+    font-size: small;
+}
+
+.pageContainer {
+display: block;
+}
+.loginContainer {
+width: 100%;
+border-radius: 0px;
+padding: 15px;
+}
 }
 
 </style>

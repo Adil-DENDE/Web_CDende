@@ -2,7 +2,7 @@
     <div class="pageContainer">
 
         <div class="loginContainer">
-            <div class="p-3 w-100">
+            <div class="p-1 w-100">
                 <div>
                     <h1 class="loginTitle">Se connecter</h1>
                 </div>
@@ -25,7 +25,7 @@
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
                         <input v-model="password" ref="inputType" type="password" class="form-control" placeholder="Mot de passe"
                             aria-label="paswoord" aria-describedby="basic-addon1">
-                        <span class="input-group-text" id="basic-addon1"><span @click="changeInputType" ref="eyeIcon"
+                        <span class="input-group-text" id="basic-addon1"><span @click="changeInputType(inputType, eyeIcon)" ref="eyeIcon"
                                 class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
                     </div>
 
@@ -59,15 +59,15 @@ const eyeIcon = ref(); // ref voor het eye icon te veranderen //
 const email = ref(''); // ref voor het email veld //
 const password = ref(''); // ref voor het password veld //
 
-function changeInputType() {
-    if (inputType.value.type == 'password') {
-        inputType.value.type = 'text';
-        eyeIcon.value.classList.remove('pi-eye-slash');
-        eyeIcon.value.classList.add('pi-eye');
+function changeInputType(input, icon) {
+    if (input.type == 'password') {
+        input.type = 'text';
+        icon.classList.remove('pi-eye-slash');
+        icon.classList.add('pi-eye');
     } else {
-        inputType.value.type = 'password';
-        eyeIcon.value.classList.remove('pi-eye');
-        eyeIcon.value.classList.add('pi-eye-slash');
+        input.type = 'password';
+        icon.classList.remove('pi-eye');
+        icon.classList.add('pi-eye-slash');
     }
 }
 
@@ -150,5 +150,14 @@ function auth(inputEmail, inputPassword) {  // DEZE METHODE MOET IN DE STORE GEI
     .txtPwd {
         font-size: small;
     }
+
+   .pageContainer {
+    display: block;
+   }
+   .loginContainer {
+    width: 100%;
+    border-radius: 0px;
+    padding: 15px;
+   }
 }
 </style>
