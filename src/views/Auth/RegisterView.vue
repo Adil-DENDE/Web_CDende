@@ -3,7 +3,7 @@
 
         <div class="loginContainer">
             <div>
-                <h1 class="loginTitle">Register</h1>
+                <h1 class="loginTitle">Inscrivez-vous</h1>
             </div>
             <br>
             <div>
@@ -11,29 +11,35 @@
                 <!-- En voor de icons https://primevue.org/icons/ -->
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
-                    <input type="text" class="form-control" placeholder="Naam" aria-label="Naam"
+                    <input type="text" class="form-control" placeholder="Pseudo" aria-label="Naam"
                         aria-describedby="basic-addon1">
                 </div>
                 <!-- Input velden voor in te loggen (bootstrap) -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                    <input type="password" class="form-control" placeholder="Email" aria-label="Email"
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-at"></span></span>
+                    <input type="password" class="form-control" placeholder="E-mail" aria-label="Email"
                         aria-describedby="basic-addon1">
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                    <input type="password" class="form-control" placeholder="paswoord" aria-label="paswoord"
+                    <input type="password" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
+                    <input type="password" class="form-control" placeholder="Confirmer le mot de passe" aria-label="paswoord"
                         aria-describedby="basic-addon1">
                 </div>
 
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary font-monospace" type="button" @click="register">Register</button>
+                    <button class="btn btn-light font-monospace" type="button" @click="register">S'inscrire</button>
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-link p-lg-0 font-monospace" href="/">Heb al een account?</a>
-                    <a class="btn btn-link p-lg-0 font-monospace" href="/recover">Paswoord vergeten?</a>
+                    <a class="btn btn-link p-lg-0 font-monospace text-light" href="/">J'ai déjà un compte</a>
+                    <a class="btn btn-link p-lg-0 font-monospace text-light" href="/recover">Mot de passe oublié ?</a>
                 </div>
 
             </div>
@@ -69,7 +75,7 @@ function register(/*naam, email, password*/) {
 }
 
 .loginContainer {
-    background-color: rgba(57, 59, 63, 0.581);
+    background-color: #0E48BC;
     border-radius: 25px;
     border: solid 1px rgb(255, 255, 255);
     padding: 35px;

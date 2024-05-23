@@ -4,10 +4,9 @@
         <div class="loginContainer">
             <div class="p-3 w-100">
                 <div>
-                    <h1 class="loginTitle">Log In</h1>
+                    <h1 class="loginTitle">Se connecter</h1>
                 </div>
 
-                <br>
 
                 <div id="logoContainer">
                     <div id="logo"></div>
@@ -18,29 +17,25 @@
                     <!-- En voor de icons https://primevue.org/icons/ -->
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
-                        <input type="text" class="form-control" placeholder="Email" aria-label="email"
+                        <input type="text" class="form-control" placeholder="E-mail" aria-label="email"
                             aria-describedby="basic-addon1">
                     </div>
                     <!-- Input velden voor in te loggen (bootstrap) -->
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                        <input type="password" class="form-control" placeholder="paswoord" aria-label="paswoord"
+                        <input type="password" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
                             aria-describedby="basic-addon1">
                     </div>
-                    <!-- Button om in te loggen. 2 keuze -->
-                    <!-- <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary">Login</button>
-                </div> -->
 
-                    <!-- Button om in te loggen. 2 keuze -->
+
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary font-monospace border border-light" type="button" @click="auth" >Login</button>
+                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth" >Se connecter</button>
                     </div>
 
 
                     <div class="d-flex justify-content-between">
-                        <a class="btn btn-link p-lg-0 font-monospace txtAccount" href="/register">Geen account?</a>
-                        <a class="btn btn-link p-lg-0 font-monospace txtPwd" href="/recover">Paswoord vergeten?</a>
+                        <a class="btn btn-link p-lg-0 font-monospace text-white txtAccount" href="/register">Vous n'avez pas de compte ?</a>
+                        <a class="btn btn-link p-lg-0 font-monospace text-white txtPwd" href="/recover">Mot de passe oublié ?</a>
                     </div>
 
                 </div>
@@ -76,7 +71,7 @@ function auth(/* email, password */) {
 }
 
 .loginContainer {
-    background-color: rgb(46, 48, 52);
+    background-color: rgb(14, 72, 188);
     border-radius: 25px;
     border: solid 1px rgb(255, 255, 255);
     padding: 25px;
@@ -99,6 +94,7 @@ function auth(/* email, password */) {
 #logo {
     padding: 50px;
     background-image: url(/src/assets/friends-icon.png);
+    filter: invert(97%) sepia(0%) saturate(2%) hue-rotate(112deg) brightness(118%) contrast(100%);
     opacity: 0.6;
     background-size: contain;
     background-repeat: no-repeat;

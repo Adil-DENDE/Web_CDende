@@ -1,20 +1,22 @@
 <template>
-  <main>
-    <NavigationBar />
-    <main style="background-color: #181818;">
-      <div class="container pageContainer">
+  <!-- Nav Component -->
+  <NavigationBar />
+  <!-- Nav Component -->
 
-        <div class="d-flex justify-content-center">
-          <div class="spinner-border mt-5 bg-white" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+  <main style="background-color: #181818;">
+    <div class="container pageContainer">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border mt-5 bg-white" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
-        <h5 class="text-center text-white">J'ai just pas d'inspi coming soon..?</h5>
-
       </div>
-    </main>
+      <h5 class="text-center text-white">J'ai just pas d'inspi coming soon..?</h5>
+    </div>
   </main>
+
+  <!-- Footer Component -->
   <FooterBar />
+  <!-- Footer Component -->
 </template>
 
 <script setup>

@@ -3,7 +3,7 @@
 
 <div class="loginContainer">
     <div>
-        <h1 class="loginTitle">Paswoord vergeten?</h1>
+        <h1 class="loginTitle">Mot de passe oublié ?</h1>
     </div>
     <br>
     <div>
@@ -16,12 +16,12 @@
 
 
         <div class="d-grid gap-2">
-            <button class="btn btn-primary font-monospace" type="button">Stuur</button>
+            <button class="btn btn-light  font-monospace" type="button">Stuur</button>
         </div>
 
 
         <div class="d-flex justify-content-between">
-            <a class="btn btn-link p-lg-0 font-monospace" href="/">Heb al een account?</a>
+            <a class="btn btn-link p-lg-0 font-monospace text-white" href="/">J'ai déjà un compte</a>
         </div>
         
     </div>
@@ -43,7 +43,7 @@
 }
 
 .loginContainer {
-    background-color: rgba(57, 59, 63, 0.581);
+    background-color: #0E48BC;
     border-radius: 25px;
     border: solid 1px rgb(255, 255, 255);
     padding: 35px;
