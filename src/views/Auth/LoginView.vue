@@ -15,7 +15,7 @@
                 <div>
                     <!-- Input velden voor in te loggen (bootstrap) -->
                     <!-- En voor de icons https://primevue.org/icons/ -->
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 ">
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
                         <input type="text" class="form-control" placeholder="E-mail" aria-label="email"
                             aria-describedby="basic-addon1">
@@ -25,19 +25,21 @@
                         <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
                         <input type="password" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
                             aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1"><span class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>      
                     </div>
 
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth" >Se connecter</button>
+                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth">Se connecter</button>     
                     </div>
 
 
                     <div class="d-flex justify-content-between">
-                        <a class="btn btn-link p-lg-0 font-monospace text-white txtAccount" href="/register">Vous n'avez pas de compte ?</a>
-                        <a class="btn btn-link p-lg-0 font-monospace text-white txtPwd" href="/recover">Mot de passe oublié ?</a>
+                        <a class="btn btn-link p-lg-0 font-monospace text-white txtAccount" href="/register">Vous n'avez
+                            pas de compte ?</a>
+                        <a class="btn btn-link p-lg-0 font-monospace text-white txtPwd" href="/recover">Mot de passe
+                            oublié ?</a>
                     </div>
-
                 </div>
             </div>
 

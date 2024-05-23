@@ -25,13 +25,18 @@
                     <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
                     <input type="password" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
                         aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
-                    <input type="password" class="form-control" placeholder="Confirmer le mot de passe" aria-label="paswoord"
-                        aria-describedby="basic-addon1">
+                    <input type="password" class="form-control" placeholder="Confirmer le mot de passe" aria-label="paswoord" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
                 </div>
+
+
+
+
 
                 <div class="d-grid gap-2">
                     <button class="btn btn-light font-monospace" type="button" @click="register">S'inscrire</button>
@@ -108,4 +113,5 @@ function register(/*naam, email, password*/) {
 *:focus {
     box-shadow: none !important;
 }
+
 </style>
