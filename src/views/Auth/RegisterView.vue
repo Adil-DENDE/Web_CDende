@@ -144,6 +144,7 @@ display: block;
 width: 100%;
 border-radius: 0px;
 padding: 15px;
+padding-top: 25px;
 }
 }
 

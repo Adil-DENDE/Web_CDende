@@ -158,6 +158,7 @@ function auth(inputEmail, inputPassword) {  // DEZE METHODE MOET IN DE STORE GEI
     width: 100%;
     border-radius: 0px;
     padding: 15px;
+    padding-top: 25px;
    }
 }
 </style>
