@@ -14,11 +14,24 @@
           <div>
             <div class="navList">
               <a class="p-2 h4 navItem text-decoration-none" href="/cars"><i
-                  class="bi bi-car-front-fill text-white"></i><span class="navTitle">Voitures</span></a>
-              <a class="p-2 h4 navItem text-decoration-none " href="/"> <i
-                  class="bi bi-box-arrow-right text-white"></i><span class="navTitle">Deconnexion</span></a>
-              <a class="p-2 h4 navItem text-decoration-none " href="/"><i
-                  class="bi bi-person-circle text-white"></i><span class="navTitle">Profil</span></a>
+                  class="bi bi-car-front-fill text-white icon"></i><span class="navTitle">Voitures</span></a>
+              <!-- <div class="hr text-white"></div> -->
+              <a class="p-2 h4 navItem text-decoration-none" href="/message"> <i class="bi bi-send icon"></i><span
+                  class="navTitle">Messages</span></a>
+
+
+              <span class="dropdown">
+                <a class="p-2 h4 navItem text-decoration-none dropdown-toggle " data-bs-toggle="dropdown"
+                  aria-expanded="false" href="/"><i class="bi bi-person-circle text-white icon"></i><span
+                    class="navTitle">Profil</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item " href="#"><i class="bi bi-person-circle text-white icon"></i>Profil</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-gear-fill"></i>Paramètres</a></li>
+                  <li><a class="dropdown-item" href="/"><i
+                        class="bi bi-box-arrow-right text-white icon"></i>Deconnexion</a></li>
+                </ul>
+              </span>
             </div>
           </div>
 
@@ -44,13 +57,17 @@
 @media only screen and (max-width: 991px) {
   .navItem {
     display: block;
-    border: solid 1px white;
-    border-radius: 15px;
-   width: fit-content
+    width: fit-content;
   }
 
   .navTitle {
     padding-left: 5px;
+    font-size: 16px;
+  }
+
+  .icon {
+    font-size: 16px;
+
   }
 }
 

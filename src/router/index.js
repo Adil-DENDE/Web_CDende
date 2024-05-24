@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/HomePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: "/cars",
       name: "cars",
-      component: () => import("../views/CarView.vue"),
+      component: () => import("../views/CarPage.vue"),
     },
     {
       path: "/",
@@ -31,6 +31,11 @@ const router = createRouter({
       path: "/recover",
       name: "pwd-recover",
       component: ()=> import("../views/Auth/RecoverPwdView.vue")
+    },
+    {
+      path: "/message",
+      name: "message",
+      component: ()=> import("../views/MessagesPage.vue")
     }
   ],
 });

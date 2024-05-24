@@ -91,7 +91,7 @@ function auth(inputEmail, inputPassword) {  // DEZE METHODE MOET IN DE STORE GEI
 }
 
 .loginContainer {
-    background-color: rgb(14, 72, 188);
+    background-color:#0D6EFD;
     border-radius: 25px;
     border: solid 1px rgb(255, 255, 255);
     padding: 25px;
