@@ -16,17 +16,17 @@
                     <!-- Input velden voor in te loggen (bootstrap) -->
                     <!-- En voor de icons https://primevue.org/icons/ -->
                     <div class="input-group mb-3 ">
-                        <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
+                        <span class="input-group-text" id="basic-addon1"><span class="pi pi-user text-dark"></span></span>
                         <input v-model="email" type="text" class="form-control" placeholder="E-mail"  aria-label="email"
                             aria-describedby="basic-addon1">
                     </div>
                     <!-- Input velden voor in te loggen (bootstrap) -->
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
+                        <span class="input-group-text" id="basic-addon1"><span class="pi pi-key text-dark"></span></span>
                         <input v-model="password" ref="inputType" type="password" class="form-control" placeholder="Mot de passe"
                             aria-label="paswoord" aria-describedby="basic-addon1">
                         <span class="input-group-text" id="basic-addon1"><span @click="changeInputType(inputType, eyeIcon)" ref="eyeIcon"
-                                class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
+                                class="pi pi-eye-slash text-dark" id="togglePassword" role="button"></span></span>
                     </div>
 
 

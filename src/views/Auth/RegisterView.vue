@@ -10,28 +10,28 @@
                 <!-- Input velden voor in te loggen (bootstrap) -->
                 <!-- En voor de icons https://primevue.org/icons/ -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-user"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-user text-dark"></span></span>
                     <input type="text" class="form-control" placeholder="Pseudo" aria-label="Naam"
                         aria-describedby="basic-addon1">
                 </div>
                 <!-- Input velden voor in te loggen (bootstrap) -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-at"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-at text-dark"></span></span>
                     <input type="password" class="form-control" placeholder="E-mail" aria-label="Email"
                         aria-describedby="basic-addon1">
                 </div>
 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key text-dark"></span></span>
                     <input type="password" ref="inputTypePwd" class="form-control" placeholder="Mot de passe" aria-label="paswoord"
                         aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1"><span ref="eyeIcon" @click="changeInputType(inputTypePwd, eyeIcon)" class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span ref="eyeIcon" @click="changeInputType(inputTypePwd, eyeIcon)" class="pi pi-eye-slash text-dark" id="togglePassword" role="button"></span></span>
                 </div>
 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span class="pi pi-key text-dark"></span></span>
                     <input type="password" ref="inputTypePwdRepeat" class="form-control" placeholder="Confirmer le mot de passe" aria-label="paswoord" aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1"><span ref="eyeIconPwdRepeat" @click="changeInputType(inputTypePwdRepeat, eyeIconPwdRepeat)" class="pi pi-eye-slash" id="togglePassword" role="button"></span></span>
+                    <span class="input-group-text" id="basic-addon1"><span ref="eyeIconPwdRepeat" @click="changeInputType(inputTypePwdRepeat, eyeIconPwdRepeat)" class="pi pi-eye-slash text-dark" id="togglePassword" role="button"></span></span>
                 </div>
 
 

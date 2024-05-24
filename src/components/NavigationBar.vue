@@ -11,20 +11,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- HIER ZET IK WAT IN DE NAV ZAL ZIJN  -->
-          <div v-if="isComputer">
-            <div>
-              <a class="p-2 h5" href="/cars"><i class="bi bi-car-front-fill text-white"></i></a>
-              <a class="p-2 h5" href="/"> <i class="bi bi-box-arrow-right text-white"></i></a>
-              <a class="p-2 h5" href="/"><i class="bi bi-person-circle text-white"></i></a>
-            </div>
-          </div>
-          <div v-if="isMobile">
-            <div>
-              <a class="p-2" href="/cars"><i class="bi bi-car-front-fill text-white ">Voitures</i></a>
-              <a class="p-2" href="/"> <i class="bi bi-box-arrow-right text-white">Se deconnecter</i></a>
-            </div>
-            <div>
-              <a class="p-2" href="/"><i class="bi bi-person-circle text-white">Profil</i></a>
+          <div>
+            <div class="navList">
+              <a class="p-2 h4 navItem text-decoration-none" href="/cars"><i
+                  class="bi bi-car-front-fill text-white"></i><span class="navTitle">Voitures</span></a>
+              <a class="p-2 h4 navItem text-decoration-none " href="/"> <i
+                  class="bi bi-box-arrow-right text-white"></i><span class="navTitle">Deconnexion</span></a>
+              <a class="p-2 h4 navItem text-decoration-none " href="/"><i
+                  class="bi bi-person-circle text-white"></i><span class="navTitle">Profil</span></a>
             </div>
           </div>
 
@@ -38,12 +32,31 @@
 
 
 <script setup>
-const isComputer = window.innerWidth > 768;
-const isMobile = window.innerWidth < 768;
+
 </script>
 
 <style>
 #navbarSupportedContent {
   justify-content: flex-end;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .navItem {
+    display: block;
+    border: solid 1px white;
+    border-radius: 15px;
+   width: fit-content
+  }
+
+  .navTitle {
+    padding-left: 5px;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .navTitle {
+    display: none;
+  }
 }
 </style>
