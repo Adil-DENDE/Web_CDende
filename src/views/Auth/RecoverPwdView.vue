@@ -16,12 +16,12 @@
 
 
         <div class="d-grid gap-2">
-            <button class="btn btn-light  font-monospace" type="button">Stuur</button>
+            <button class="btn btn-light " type="button">Stuur</button>
         </div>
 
 
         <div class="d-flex justify-content-between">
-            <a class="btn btn-link p-lg-0 font-monospace text-white" href="/">J'ai déjà un compte</a>
+            <a class="btn btn-link p-lg-0  text-white" href="/">J'ai déjà un compte</a>
         </div>
         
     </div>
@@ -54,12 +54,8 @@
 .loginTitle {
     text-align: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
 }
 
-.form-control {
-    font-family: 'Courier New', Courier, monospace;
-}
 
 .txtInput {
     display: block;

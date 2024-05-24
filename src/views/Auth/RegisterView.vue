@@ -39,12 +39,12 @@
 
 
                 <div class="d-grid gap-2">
-                    <button class="btn btn-light font-monospace" type="button" @click="register">S'inscrire</button>
+                    <button class="btn btn-light " type="button" @click="register">S'inscrire</button>
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-link p-lg-0 font-monospace text-light" href="/">J'ai déjà un compte</a>
-                    <a class="btn btn-link p-lg-0 font-monospace text-light" href="/recover">Mot de passe oublié ?</a>
+                    <a class="btn btn-link p-lg-0  text-light" href="/">J'ai déjà un compte</a>
+                    <a class="btn btn-link p-lg-0  text-light" href="/recover">Mot de passe oublié ?</a>
                 </div>
 
             </div>
@@ -107,12 +107,10 @@ function register(/*naam, email, password, passwordrepeat*/) {
 .loginTitle {
     text-align: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+
 }
 
-.form-control {
-    font-family: 'Courier New', Courier, monospace;
-}
+
 
 .txtInput {
     display: block;

@@ -31,15 +31,15 @@
 
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-light font-monospace border border-light" type="button" @click="auth(email, password)">Se
+                        <button class="btn btn-light  border border-light" type="button" @click="auth(email, password)">Se
                             connecter</button>
                     </div>
 
 
                     <div class="d-flex justify-content-between">
-                        <a class="btn btn-link p-lg-0 font-monospace text-white txtAccount" href="/register">Vous n'avez
+                        <a class="btn btn-link p-lg-0  text-white txtAccount" href="/register">Vous n'avez
                             pas de compte ?</a>
-                        <a class="btn btn-link p-lg-0 font-monospace text-white txtPwd" href="/recover">Mot de passe
+                        <a class="btn btn-link p-lg-0  text-white txtPwd" href="/recover">Mot de passe
                             oublié ?</a>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ function auth(inputEmail, inputPassword) {  // DEZE METHODE MOET IN DE STORE GEI
 .loginTitle {
     text-align: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    
 }
 
 #logoContainer {
