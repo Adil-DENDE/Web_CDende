@@ -31,10 +31,10 @@
             </div>
         </div>
     </div>
-    <div v-else>
-        <div class="phoneChatContainer">
+    
+        <div v-else class="phoneChatContainer">
 
-            <div class="d-flex p-2 bg-dark">
+            <div class="d-flex p-2 bg-dark ">
                 <a href="/home"><i class="bi bi-arrow-left display-6"></i></a>
                 <div class="w-100">
                     <h1 class="text-center">Messages</h1>
@@ -95,13 +95,13 @@
                 </div>
             </div>
 
-            <div class="fixed-bottom messageContainer" >
+            <div class=" messageContainerMobile" >
                 <input type="text" class="inputMsg" placeholder="ecris un message.." />
                 <button type="button" class="btnMsg"><i class="bi bi-send icon"></i></button>
             </div>
 
         </div>
-    </div>
+    
 
 </template>
 
@@ -194,11 +194,22 @@ const isComputer = window.innerWidth > 768;
 .phoneChatContainer {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 
+}
+.messageContainerMobile {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    background-color: #282828;
+    
 }
 
 .mainChat {
-    height: 87vh;
+
+    height: 100%;
     font-size: 20px;
 
 }
