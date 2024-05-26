@@ -95,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="messageContainer">
+            <div class="fixed-bottom messageContainer" >
                 <input type="text" class="inputMsg" placeholder="ecris un message.." />
                 <button type="button" class="btnMsg"><i class="bi bi-send icon"></i></button>
             </div>
@@ -198,7 +198,7 @@ const isComputer = window.innerWidth > 768;
 }
 
 .mainChat {
-    height: 83vh;
+    height: 87vh;
     font-size: 20px;
 
 }
