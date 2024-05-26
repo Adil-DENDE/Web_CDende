@@ -214,10 +214,11 @@ const isComputer = window.innerWidth > 768;
 }
 
 .mainChat {
-
-    height: 94%;
+    height: 88%;
     font-size: 16px;
     position: static;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .myMsg {
