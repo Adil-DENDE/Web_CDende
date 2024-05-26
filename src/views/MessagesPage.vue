@@ -33,17 +33,73 @@
     </div>
     <div v-else>
         <div class="phoneChatContainer">
-            <div class="d-flex">
-                <a href="/home" class=""><i class="bi bi-arrow-left-circle-fill h1"></i></a>
-                <h1 class="text-dark">Messages</h1>
+
+            <div class="d-flex p-2 bg-dark">
+                <a href="/home"><i class="bi bi-arrow-left display-6"></i></a>
+                <div class="w-100">
+                    <h1 class="text-center">Messages</h1>
+                </div>
             </div>
-            <div>
-                <p class="text-dark mainChat">CHAT ICI</p>
+            
+            <div class="bg-primary mainChat overflow-auto">
+                <div class="d-flex m-1  w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">Gros ta pas vu mon ordinateur ?</p>
+                </div>
+                
+                <div class="d-flex m-1 justify-content-end ">
+                    <p class="myMsg">nn il etait ou frere, jetais pas la aujd</p>
+                </div>
+
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">jlavais laisser sur ta table zebi</p>
+                </div>
+
+                <div class="d-flex m-1 justify-content-end ">
+                    <p class="myMsg">blablablabla</p>
+                </div>
+                <div class="d-flex m-1 justify-content-end ">
+                    <p class="myMsg">blablablabla</p>
+                </div>
+                <div class="d-flex m-1 justify-content-end ">
+                    <p class="myMsg">blablablabla</p>
+                </div>
+                <div class="d-flex m-1 justify-content-end ">
+                    <p class="myMsg">blablablabla</p>
+                </div>
+         
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">tg tg</p>
+                </div>
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">tg tg</p>
+                </div>
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">tg tg</p>
+                </div>
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">tg tg</p>
+                </div>
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">tg tg</p>
+                </div>
+                <div class="d-flex m-1 w-75">
+                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                    <p class="hisMsg">tg tg</p>
+                </div>
             </div>
+
             <div class="messageContainer">
                 <input type="text" class="inputMsg" placeholder="ecris un message.." />
                 <button type="button" class="btnMsg"><i class="bi bi-send icon"></i></button>
             </div>
+
         </div>
     </div>
 
@@ -131,18 +187,42 @@ const isComputer = window.innerWidth > 768;
     color: white;
     border: none;
 }
+
 /* VOOR COMPUTER */
 
 /* VOOR TELEFOON */
 .phoneChatContainer {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .mainChat {
-height: 80vh;
+    height: 83vh;
     font-size: 20px;
-    
+
+}
+
+.myMsg {
+    background-color: #333;
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
+    align-self: flex-end;
+}
+
+.hisMsg {
+    background-color: #282828;
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.userIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>
