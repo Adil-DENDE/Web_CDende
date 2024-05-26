@@ -115,7 +115,7 @@ const isComputer = window.innerWidth > 768;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100svh;
+    height: 100vh;
     color: white;
 }
 
@@ -200,16 +200,16 @@ const isComputer = window.innerWidth > 768;
 .messageContainerMobile {
     display: flex;
     justify-content: space-between;
-
+    position: fixed;
+    bottom: 0;
     width: 100%;
-
     background-color: #282828;
     
 }
 
 .mainChat {
 
-    height: 100%;
+    height: 88%;
     font-size: 20px;
 
 }
