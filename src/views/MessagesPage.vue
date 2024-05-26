@@ -1,6 +1,6 @@
 <template>
-    <div class="pageContainer" style="background-color: #181818;">
-        <div v-if="isComputer" class="chatContainer d-flex justify-content-between">
+    <div v-if="isComputer" class="pageContainer" style="background-color: #181818;">
+        <div class="chatContainer d-flex justify-content-between">
             <div class="leftchatSide">
 
                 <div class="chatList">
@@ -29,20 +29,24 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div v-else>
+    </div>
+    <div v-else>
+        <div class="phoneChatContainer">
             <div class="d-flex">
                 <a href="/home" class=""><i class="bi bi-arrow-left-circle-fill h1"></i></a>
-                <h2 style="margin-bottom: 0px">CHAT MOBILE</h2>
+                <h1 class="text-dark">Messages</h1>
             </div>
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border mt-5 text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
+            <div>
+                <p class="text-dark mainChat">CHAT ICI</p>
+            </div>
+            <div class="messageContainer">
+                <input type="text" class="inputMsg" placeholder="ecris un message.." />
+                <button type="button" class="btnMsg"><i class="bi bi-send icon"></i></button>
             </div>
         </div>
     </div>
+
 </template>
 
 <script setup>
@@ -50,6 +54,7 @@ const isComputer = window.innerWidth > 768;
 
 </script>
 <style>
+/* VOOR COMPUTER */
 .pageContainer {
     display: flex;
     justify-content: center;
@@ -125,5 +130,19 @@ const isComputer = window.innerWidth > 768;
     background-color: #333;
     color: white;
     border: none;
+}
+/* VOOR COMPUTER */
+
+/* VOOR TELEFOON */
+.phoneChatContainer {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mainChat {
+height: 80vh;
+    font-size: 20px;
+    
 }
 </style>
