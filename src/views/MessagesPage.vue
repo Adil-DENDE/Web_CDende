@@ -31,77 +31,82 @@
             </div>
         </div>
     </div>
-    
-        <div v-else class="phoneChatContainer">
 
-            <div class="d-flex p-2 bg-dark ">
-                <a href="/home"><i class="bi bi-arrow-left display-6"></i></a>
-                <div class="w-100">
-                    <h1 class="text-center">Messages</h1>
-                </div>
+    <div v-else class="phoneChatContainer">
+
+        <div class="d-flex p-2 bg-dark fixed-top">
+            <a href="/home"><i class="bi bi-arrow-left display-6"></i></a>
+            <div class="w-100">
+                <h1 class="text-center">Messages</h1>
             </div>
-            
-            <div class="bg-primary mainChat overflow-auto">
-                <div class="d-flex m-1  w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">Gros ta pas vu mon ordinateur ?</p>
-                </div>
-                
-                <div class="d-flex m-1 justify-content-end ">
-                    <p class="myMsg">nn il etait ou frere, jetais pas la aujd</p>
-                </div>
-
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">jlavais laisser sur ta table zebi</p>
-                </div>
-
-                <div class="d-flex m-1 justify-content-end ">
-                    <p class="myMsg">blablablabla</p>
-                </div>
-                <div class="d-flex m-1 justify-content-end ">
-                    <p class="myMsg">blablablabla</p>
-                </div>
-                <div class="d-flex m-1 justify-content-end ">
-                    <p class="myMsg">blablablabla</p>
-                </div>
-                <div class="d-flex m-1 justify-content-end ">
-                    <p class="myMsg">blablablabla</p>
-                </div>
-         
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">tg tg</p>
-                </div>
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">tg tg</p>
-                </div>
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">tg tg</p>
-                </div>
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">tg tg</p>
-                </div>
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">tg tg</p>
-                </div>
-                <div class="d-flex m-1 w-75">
-                    <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
-                    <p class="hisMsg">tg tg</p>
-                </div>
-            </div>
-
-            <div class=" messageContainerMobile" >
-                <input type="text" class="inputMsg" placeholder="ecris un message.." />
-                <button type="button" class="btnMsg"><i class="bi bi-send icon"></i></button>
-            </div>
-
         </div>
-    
+
+        <div class="bg-primary mainChat overflow-auto">
+            <div class="d-flex m-1  w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">Gros ta pas vu mon ordinateur ?</p>
+            </div>
+
+            <div class="d-flex m-1 justify-content-end ">
+                <p class="myMsg">nn il etait ou frere, jetais pas la aujd</p>
+            </div>
+
+            <div class="d-flex m-1  w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">Gros ta pas vu mon ordinateur ?</p>
+            </div>
+
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">jlavais laisser sur ta table zebi</p>
+            </div>
+
+            <div class="d-flex m-1 justify-content-end ">
+                <p class="myMsg">blablablabla</p>
+            </div>
+            <div class="d-flex m-1 justify-content-end ">
+                <p class="myMsg">blablablabla</p>
+            </div>
+            <div class="d-flex m-1 justify-content-end ">
+                <p class="myMsg">blablablabla</p>
+            </div>
+            <div class="d-flex m-1 justify-content-end ">
+                <p class="myMsg">blablablabla</p>
+            </div>
+
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">tg tg</p>
+            </div>
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">tg tg</p>
+            </div>
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">tg tg</p>
+            </div>
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">tg tg</p>
+            </div>
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">tg tg</p>
+            </div>
+            <div class="d-flex m-1 w-75">
+                <span class="userIcon"><i class="bi bi-person-circle h1"></i></span>
+                <p class="hisMsg">tg tg</p>
+            </div>
+        </div>
+
+        <div class=" messageContainerMobile">
+            <input type="text" class="inputMsg" placeholder="ecris un message.." />
+            <button type="button" class="btnMsg"><i class="bi bi-send icon"></i></button>
+        </div>
+
+    </div>
+
 
 </template>
 
@@ -197,6 +202,7 @@ const isComputer = window.innerWidth > 768;
     height: 100vh;
 
 }
+
 .messageContainerMobile {
     display: flex;
     justify-content: space-between;
@@ -204,14 +210,14 @@ const isComputer = window.innerWidth > 768;
     bottom: 0;
     width: 100%;
     background-color: #282828;
-    
+
 }
 
 .mainChat {
 
-    height: 88%;
-    font-size: 20px;
-
+    height: 94%;
+    font-size: 16px;
+    position: static;
 }
 
 .myMsg {
