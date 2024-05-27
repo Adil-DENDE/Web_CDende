@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavigationBar from '@/components/NavFooter/NavigationBar.vue';
 import FooterBar from '@/components/NavFooter/FooterBar.vue';
+import CardContainer from '@/components/CarContainer.vue';
 </script>
 
 <template>
@@ -11,10 +12,10 @@ import FooterBar from '@/components/NavFooter/FooterBar.vue';
         <!-- Nav component -->
 
         <!-- Later kan ik een component hier zetten -->
-        <div class="container pageContainer">
+        <div class="container mb-5 pageContainer">
             <h1 class="text-white text-center pt-5 ">Liste de voitures</h1>
             <div class="card">
-                <div class="card-body">
+                <div class="card-body ">
                     <h3 class="card-title h3">Recherche une voiture</h3>
 
 
@@ -28,13 +29,17 @@ import FooterBar from '@/components/NavFooter/FooterBar.vue';
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search text-dark"></i></span>
                     </div>
 
-                    <div class="d-flex justify-content-center">
-                        <div class="spinner-border mt-5 text-primary " role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+                    <div class="listCar ">
+                        <CardContainer />
+                        <CardContainer />
+                        <CardContainer />
+                        <CardContainer />
+                        <CardContainer />
+                        <CardContainer />
+
+
                     </div>
 
-                    <h5 class="text-center text-dark">J'ai just pas d'inspi coming soon..?</h5>
                 </div>
             </div>
         </div>
@@ -48,7 +53,7 @@ import FooterBar from '@/components/NavFooter/FooterBar.vue';
 
 <style scoped>
 main {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,5 +61,12 @@ main {
 
 .pageContainer {
     height: 100%;
+}
+
+.listCar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
 }
 </style>
