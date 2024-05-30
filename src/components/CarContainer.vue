@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue';
 
 
 defineProps({
     carName: String,
     carImg: String,
+    carLink: String
 })
 
 
@@ -19,7 +19,7 @@ defineProps({
         <img class="CarImg" :src="carImg"><!--//IMG VOOR DE PROPS // -->
 
         <div class="d-flex justify-content-end">
-            <a href="/cars" ><i class="bi bi-info-circle-fill text-dark display-6"></i></a>
+            <a href="/cars" ><i class="bi bi-info-circle-fill text-dark display-6"></i></a> // TODO //
         </div>
 
     </div>

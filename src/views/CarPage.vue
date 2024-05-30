@@ -9,23 +9,41 @@ import { onMounted, ref } from 'vue';
 // LIJST VAN ALLE AUTOS NAMEN
 let carName = ref([]);
 let carImg = ref([]);
+const search = ref("");
+
 onMounted(() => {
-    getAllCars();
+    getCars();
 });
 
-function getAllCars() {
-
-    axios.get('https://freetestapi.com/api/v1/cars?limit=5')
-        .then((response) => {
-            const data = response.data;
-            data.forEach(cars => {
-                carName.value.push(cars.make + " " + cars.model);
-                carImg.value.push(cars.image);
+function getCars(search) {
+    carName.value = [];
+    carImg.value = [];
+    if (search == "" || search == null) {
+        axios.get('https://freetestapi.com/api/v1/cars?limit=5')
+            .then((response) => {
+                const data = response.data;
+                data.forEach(cars => {
+                    carName.value.push(cars.make + " " + cars.model);
+                    carImg.value.push(cars.image);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
             });
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+    } else {
+        axios.get('https://freetestapi.com/api/v1/cars?search=' + search)
+            .then((response) => {
+                const data = response.data;
+                data.forEach(cars => {
+                    carName.value.push(cars.make + " " + cars.model);
+                    carImg.value.push(cars.image);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
 }
 
 </script>
@@ -45,26 +63,30 @@ function getAllCars() {
                     <h3 class="card-title h3">Recherche une voiture</h3>
 
 
+
                     <p class="card-text text-dark">Ici, vous pouvez rechercher une voiture et voir vos propres voitures.
+                        <em class="text-dark">(Prochainement vous pourrez cliquer sur le boutons info d'une voiture pour avoir + d'info sur la
+                        voiture)</em>
                     </p>
 
                     <div class="input-group mb-3">
-
-                        <input type="text" class="form-control" placeholder="Nom de voiture" aria-label="Username"
-                            aria-describedby="basic-addon1">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search text-dark"></i></span>
+                        <input v-model="search" type="text" class="form-control" placeholder="Nom de la voiture..."
+                            aria-label="Username" aria-describedby="basic-addon1">
+                        <span @click="getCars(search)" class="input-group-text" id="basic-addon1"><i
+                                class="bi bi-search text-dark"></i></span>
                     </div>
 
-                    <div class="listCar ">
-                        <CardContainer v-for="(car, index) in carName" 
-                        :key="car" 
-                        :carName="carName[index]"
-                        :carImg="carImg[index]" />
+                    <div v-if="!carName.length == 0" class="text-center">
+                        <div class="listCar overflow-hidden ">
+                            <CardContainer v-for="(car, index) in carName" :key="car" :carName="carName[index]"
+                                :carImg="carImg[index]" carLink="/home" />
 
-
-
-
+                        </div>
                     </div>
+                    <div v-else>
+                        <p class="text-white text-center bg-primary rounded-2 h5">Aucune voiture trouvée</p>
+                    </div>
+
 
                 </div>
             </div>
@@ -72,7 +94,7 @@ function getAllCars() {
         <!-- Later kan ik een component hier zetten -->
 
         <!-- Footer component -->
-        <FooterBar />
+        <FooterBar class="footerBar" />
         <!-- Footer component -->
     </main>
 </template>
@@ -94,5 +116,14 @@ main {
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-around;
+}
+
+.footerBar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
 }
 </style>
