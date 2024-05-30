@@ -1,10 +1,27 @@
+<script setup>
+import { ref } from 'vue';
+
+
+defineProps({
+    carName: String,
+    carImg: String,
+})
+
+
+</script>
+
+
+
+
 <template>
     <div class="CarCard">
-        <p class="text-dark text-center">Nom de la voiture </p> <!--//NAAM VOOR DE PROPS // -->
-        <img class="CarImg" src="https://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_brown.png"> <!--//IMG VOOR DE PROPS // -->
+        <p class="text-dark text-center h3">{{ carName }}</p> <!--//NAAM VOOR DE PROPS // -->
+        <img class="CarImg" :src="carImg"><!--//IMG VOOR DE PROPS // -->
+
         <div class="d-flex justify-content-end">
-            <a href="/cars"><i class="bi bi-info-circle-fill text-dark display-6"></i></a> <!--//LINK VOOR DE PROPS // -->
+            <a href="/cars" ><i class="bi bi-info-circle-fill text-dark display-6"></i></a>
         </div>
+
     </div>
 </template>
 
@@ -24,7 +41,7 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-border: #000000 solid 2px;
+    border: #000000 solid 2px;
     border-radius: 10px
 }
 

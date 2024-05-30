@@ -1,7 +1,33 @@
-<script setup lang="ts">
+<script setup>
 import NavigationBar from '@/components/NavFooter/NavigationBar.vue';
 import FooterBar from '@/components/NavFooter/FooterBar.vue';
 import CardContainer from '@/components/CarContainer.vue';
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
+
+
+// LIJST VAN ALLE AUTOS NAMEN
+let carName = ref([]);
+let carImg = ref([]);
+onMounted(() => {
+    getAllCars();
+});
+
+function getAllCars() {
+
+    axios.get('https://freetestapi.com/api/v1/cars?limit=5')
+        .then((response) => {
+            const data = response.data;
+            data.forEach(cars => {
+                carName.value.push(cars.make + " " + cars.model);
+                carImg.value.push(cars.image);
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
 </script>
 
 <template>
@@ -30,12 +56,12 @@ import CardContainer from '@/components/CarContainer.vue';
                     </div>
 
                     <div class="listCar ">
-                        <CardContainer />
-                        <CardContainer />
-                        <CardContainer />
-                        <CardContainer />
-                        <CardContainer />
-                        <CardContainer />
+                        <CardContainer v-for="(car, index) in carName" 
+                        :key="car" 
+                        :carName="carName[index]"
+                        :carImg="carImg[index]" />
+
+
 
 
                     </div>
