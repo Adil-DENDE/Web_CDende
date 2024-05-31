@@ -4,11 +4,13 @@ import FooterBar from '@/components/NavFooter/FooterBar.vue';
 import CardContainer from '@/components/CarContainer.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 // LIJST VAN ALLE AUTOS NAMEN
 let carName = ref([]);
 let carImg = ref([]);
+let carId = ref([]);
 const search = ref("");
 
 onMounted(() => {
@@ -18,6 +20,7 @@ onMounted(() => {
 function getCars(search) {
     carName.value = [];
     carImg.value = [];
+    carId.value = [];
     if (search == "" || search == null) {
         axios.get('https://freetestapi.com/api/v1/cars?limit=5')
             .then((response) => {
@@ -25,6 +28,7 @@ function getCars(search) {
                 data.forEach(cars => {
                     carName.value.push(cars.make + " " + cars.model);
                     carImg.value.push(cars.image);
+                    carId.value.push(cars.id);
                 });
             })
             .catch((error) => {
@@ -37,6 +41,7 @@ function getCars(search) {
                 data.forEach(cars => {
                     carName.value.push(cars.make + " " + cars.model);
                     carImg.value.push(cars.image);
+                    carId.value.push(cars.id);
                 });
             })
             .catch((error) => {
@@ -45,6 +50,10 @@ function getCars(search) {
     }
 
 }
+
+function goToCarPage(carId) {
+    router.push({ path: `/car/${carId}` });
+} 
 
 </script>
 
@@ -65,8 +74,9 @@ function getCars(search) {
 
 
                     <p class="card-text text-dark">Ici, vous pouvez rechercher une voiture et voir vos propres voitures.
-                        <em class="text-dark">(Prochainement vous pourrez cliquer sur le boutons info d'une voiture pour avoir + d'info sur la
-                        voiture)</em>
+                        <em class="text-dark">(Prochainement vous pourrez cliquer sur le boutons info d'une voiture pour
+                            avoir + d'info sur la
+                            voiture)</em>
                     </p>
 
                     <div class="input-group mb-3">
@@ -79,7 +89,7 @@ function getCars(search) {
                     <div v-if="!carName.length == 0" class="text-center">
                         <div class="listCar overflow-hidden ">
                             <CardContainer v-for="(car, index) in carName" :key="car" :carName="carName[index]"
-                                :carImg="carImg[index]" carLink="/home" />
+                                :carImg="carImg[index]" :carDetails="() => goToCarPage(carId[index])" />
 
                         </div>
                     </div>
