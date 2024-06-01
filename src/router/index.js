@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: "/cars",
       name: "cars",
-      component: () => import("../views/CarPage.vue"),
+      component: () => import("../views/Car/CarPage.vue"),
     },
     {
       path: "/",
@@ -36,6 +36,11 @@ const router = createRouter({
       path: "/message",
       name: "message",
       component: ()=> import("../views/MessagesPage.vue")
+    },
+    {
+      path: "/car/:id",
+      name: "car",
+      component: () => import("../views/Car/CarDetailsPage.vue"),
     }
   ],
 });

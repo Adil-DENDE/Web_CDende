@@ -5,7 +5,7 @@ defineProps({
     carName: String,
     carImg: String,
     carLink: String,
-    carDetails: String
+    carDetails: Function
 })
 
 
