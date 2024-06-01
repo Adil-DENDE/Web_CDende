@@ -88,7 +88,7 @@ function goToCarPage(carId) {
 
                     <div v-if="!carName.length == 0" class="text-center">
                         <div class="listCar overflow-hidden ">
-                            <CardContainer v-for="(car, index) in carName" :key="car" :carName="carName[index]"
+                            <CardContainer class="carCard" v-for="(car, index) in carName" :key="car" :carName="carName[index]"
                                 :carImg="carImg[index]" :carDetails="() => goToCarPage(carId[index])" />
 
                         </div>
@@ -135,5 +135,9 @@ main {
     width: 100%;
     color: white;
     text-align: center;
+}
+
+.carCard {
+    cursor: pointer
 }
 </style>

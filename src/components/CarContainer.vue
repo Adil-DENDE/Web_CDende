@@ -4,7 +4,6 @@
 defineProps({
     carName: String,
     carImg: String,
-    carLink: String,
     carDetails: Function
 })
 
@@ -15,14 +14,9 @@ defineProps({
 
 
 <template>
-    <div class="CarCard" @click="carDetails" >
+    <div class="CarCard" @click="carDetails">
         <p class="text-dark text-center h3">{{ carName }}</p> <!--//NAAM VOOR DE PROPS // -->
         <img class="CarImg" :src="carImg"><!--//IMG VOOR DE PROPS // -->
-
-        <div class="d-flex justify-content-end">
-            <a :href="carLink"  ><i class="bi bi-info-circle-fill text-dark display-6"></i></a> <!--//LINK VOOR DE PROPS // -->
-        </div>
-
     </div>
 </template>
 
